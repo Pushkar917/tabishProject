@@ -21,12 +21,14 @@ from django.urls import path, include
 
 urlpatterns = [
     path('supersecret/', admin.site.urls),
-    #path("api/v1/auth/", include("djoser.urls")),
-    #path("api/v1/auth/", include("djoser.urls.jwt")),
+    path("api/v1/auth/", include("djoser.urls")),
+    path("api/v1/auth/", include("djoser.urls.jwt")),
+    path("api/v1/users/", include("apps.users.urls")),
+    path("api/v1/assets/", include("apps.assets.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 
-admin.site.site_header = "Real Estate Admin"
-admin.site.site_title = "Real Estate Admin Portal"
-admin.site.index_title = "Welcome to real estate adminstration"
+admin.site.site_header = "Asset Management Admin"
+admin.site.site_title = "Asset Management Portal"
+admin.site.index_title = "Welcome to Asset Management adminstration"

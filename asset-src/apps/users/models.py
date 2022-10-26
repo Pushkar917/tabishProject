@@ -1,5 +1,3 @@
-from email.policy import default
-from tabnanny import verbose
 import uuid
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
