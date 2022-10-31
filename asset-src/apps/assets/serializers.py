@@ -16,3 +16,11 @@ class ImplementationCryptoCartSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ImplementationNestedSerializer(serializers.ModelSerializer):
+    cryocart = CryptoCartSerializer(many=True, required=False)
+    cryo_cart = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+
+    class Meta:
+        model = Implementation_crypto
+        fields = '__all__'
+
