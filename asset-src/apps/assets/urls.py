@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CryoCartList, CryoCartListDetail, CryoCartUpdate, ImplemetationCryoCartUpdateWithAssetID, ImplementationCryoListCreateAPIView, ImplementationCryoRetrieveUpdateAPIView
+from .views import CryoCartList, CryoCartListDetail, CryoCartUpdate, ImplemetationCryoCartUpdateWithAssetID, ImplementationCryoListCreateAPIView, ImplementationCryoRetrieveUpdateAPIView, VenderIOQProtocolView
 
 urlpatterns = [
 
@@ -13,5 +13,12 @@ urlpatterns = [
     path(r"allNewCryoAssetImplemetation/<str:assetID>", ImplemetationCryoCartUpdateWithAssetID.as_view(), name="newimplementationCryoCart"),
     path(r"allCryoAssetImplemetation/", ImplementationCryoListCreateAPIView.as_view(), name="implementationCryoCart"),
     path(r'allImplementationCryoCart/<int:pk>/', ImplementationCryoRetrieveUpdateAPIView.as_view(), name="allimplementationCryoCartUpdate"),
+
+
+    #all the cryo's venderIOQ related information 
+
+    #path(r"allVenderIOQProtocol/<str:assetID>", ImplemetationCryoCartUpdateWithAssetID.as_view(), name="newimplementationCryoCart"),
+    path(r"allVenderIOQProtocol/", VenderIOQProtocolView.as_view(), name="venderIOQProtocol"),
+    #path(r'allVenderIOQProtocol/<int:pk>/', ImplementationCryoRetrieveUpdateAPIView.as_view(), name="allimplementationCryoCartUpdate"),
 ]
     

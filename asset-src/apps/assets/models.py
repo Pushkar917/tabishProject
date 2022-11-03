@@ -2,7 +2,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class CryoCart(models.Model):
+class  CryoCart(models.Model):
+
     assetID = models.CharField(verbose_name=_("Asset ID"), max_length=50, null=False) 
     asset_status = models.CharField(verbose_name=_("Asset Qualification Status"), max_length=50, null=False)
     functional_area = models.CharField(verbose_name=_("functional_area"), max_length=50, null=False) 
@@ -25,7 +26,7 @@ class CryoCart(models.Model):
 
 
 class Implementation_crypto(models.Model):
-    cryocart = models.ForeignKey(CryoCart, on_delete=models.CASCADE)
+    cryocart = models.ForeignKey(CryoCart, related_name='implementation',on_delete=models.CASCADE)
     bemsmonitoring = models.CharField(verbose_name=_("BEMS Monitoring"), max_length=50, null=False) 
     bmramInrollment = models.CharField(verbose_name=_("BMRAM Inrollment"), max_length=50, null=False) 
     brmram_PM_Cal = models.CharField(verbose_name=_("BMRAM PM/Cal"), max_length=50, null=False) 
@@ -50,4 +51,19 @@ class Implementation_crypto(models.Model):
 
     def __str__(self):
         return f"{self.cryocart}'s implementation"
+
+
+
+class VENDOR_IOQ_PROTOCOL(models.Model):
+    cryocart = models.ForeignKey(CryoCart, related_name='vender_protocol',on_delete=models.CASCADE)
+    document_number = models.CharField(verbose_name=_("Document Number"), max_length=50, null=True) 
+    approval_date = models.DateField(verbose_name=_("Approval Date"),  null=True) 
+   
+    def __str__(self):
+        return f"{self.cryocart}'s vender_protocol"
+
+
+
+
+
 

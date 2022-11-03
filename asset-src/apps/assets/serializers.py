@@ -1,12 +1,9 @@
 from rest_framework import serializers
-from .models import CryoCart, Implementation_crypto
+from .models import CryoCart, Implementation_crypto, VENDOR_IOQ_PROTOCOL
 
 
 
-class CryptoCartSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CryoCart
-        fields = '__all__'
+
 
 
 
@@ -16,11 +13,23 @@ class ImplementationCryptoCartSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ImplementationNestedSerializer(serializers.ModelSerializer):
-    cryocart = CryptoCartSerializer(many=True, required=False)
-    cryo_cart = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
-
+class VenderIOQProtocolSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Implementation_crypto
+        model = VENDOR_IOQ_PROTOCOL
         fields = '__all__'
+
+
+
+
+
+class CryptoCartSerializer(serializers.ModelSerializer):
+    implementation = ImplementationCryptoCartSerializer(many=True, read_only=True)
+    vender_protocol = VenderIOQProtocolSerializer(many=True, read_only=True)
+    class Meta:
+        model = CryoCart
+        fields = '__all__'
+      
+
+
+
 
